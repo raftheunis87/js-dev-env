@@ -40,7 +40,14 @@
     "webpack-hot-middleware": "^2.22.2",
     "webpack-md5-hash": "0.0.6"
   },
-  "scripts": {},
+  "scripts": {
+    "prestart": "node buildScripts/startMessage.js",
+    "start": "npm-run-all --parallel security-check open:src",
+    "open:src": "node buildScripts/srcServer.js",
+    "security-check": "nsp check",
+    "localtunnel": "lt --port 3000",
+    "share": "npm-run-all --parallel open:src localtunnel"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raftheunis87/js-dev-env.git"
